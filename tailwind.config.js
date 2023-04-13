@@ -7,10 +7,9 @@ module.exports = {
         ///BRAND
         // "primary-color": "#00A7E1",
         "font-color": "#000020",
-        "primary-color": "#171a4a",
-        "secondary-color":"#6736d9",
+        "primary-color": "#003344",
+        "secondary-color":"#00838A",
         "primary-color-gradient": "#B8E4F3",
-        // "secondary-color": "#9381E5",
         "secondary-color-gradient": "#CBC6E4",
         //NEUTRO
         "title-color": "#ffffff",

@@ -35,3 +35,5 @@ dbb16dc35cb402943131f3221da4e09e6fcd5b96	{"key":"routes/auth/login.exports","int
 db01a8f77aebcdb242e8ffd3b8816a6b3377a2fa	{"key":"routes/auth/login.exports","integrity":"sha512-mkNnLC0IoU7BTUB7IpMfHk7MNAjTDOudbAYy/PlS32pCVQ77fJ8ViTmED0SEbWi2LO/eUuT2FaRPEnT/uDzeJA==","time":1681490730926,"size":115}
 44f618f355231ec73c69c6ff1500431de28400d1	{"key":"routes/auth/login.exports","integrity":"sha512-W0BHMV9i1L2eramXURteJPmW7Og/WYXqGkn/15r4BgBB+IvCkcpp3aBhsDtT1IMRg/UHPQfJdSeqNyNLu79QXw==","time":1681490750263,"size":115}
 7c91bd43ae034b997b3177bb8cc74129ed8ad792	{"key":"routes/auth/login.exports","integrity":"sha512-RVCvdolIr321H/dH0Ah6jfc8Y2Hyy9AAWaU4xOr3kQyT8IBPPTEGMhtXHlpJw93Ek1OjgHKm6giPR0HjeBdcog==","time":1681490757302,"size":115}
+f34549b7b0968a6cfc8c211ec58a713d8c1f0206	{"key":"routes/auth/login.exports","integrity":"sha512-f9wRunajdc/SpSTKJI5wOuDylnE/g+WUA5uz9QLg/zGt3F1G7K5V/Pb/2iGeo7jy80CRjuBsEXalP79+Y+f8CQ==","time":1681495570904,"size":115}
+a0cf491bdc4351f4e44cedb49bc8366717002ca2	{"key":"routes/auth/login.exports","integrity":"sha512-4zUaQiPlbc6v7A2fC1T9q3bTYD9/8nsPIRJzBF1HL1oTqEitvkrYgRmqIDVc/zSYoQX9DSunZtQ9ukvE/QAr3A==","time":1681496821845,"size":115}

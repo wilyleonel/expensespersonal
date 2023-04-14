@@ -3,31 +3,43 @@ import type { AxiosError } from "axios";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import Button from "~/components/Share/buttons/Button";
+import NewExpenses from "~/components/expenses/NewExpenses";
 import tokenConfig, { URL } from "~/components/utils/tokenConfig";
 import { useRouteData } from "~/hooks/hooks";
 
 type UserType = {
     id: number;
     email: string;
-    profile: {
-        firstName: string;
-        lastName: string;
-        phone: string;
-    };
     expenses: {
         livingPlace: number;
         feeding: number;
         outfit: number;
         health: number;
         education: number;
-    }
+    };
+    profile: {
+        firstName: string;
+        lastName: string;
+        phone: string;
+    };
+
 };
 
+type ExpensesType = {
+    id: number;
+    livingPlace: number;
+    feeding: number;
+    outfit: number;
+    health: number;
+    education: number;
+
+}
+
 const Expenses = () => {
+    const [loading, setLoading] = useState(false);
     const userId = useRouteData("root");
     const token = useRouteData("root");
-    const [user, setUser] = useState<UserType | null>(null);
-    console.log(user)
+    const [expensesData, setExpensesData] = useState<ExpensesType[] | null>(null);
 
     const decodeToken = (token: string) => {
         const payload = token.split(".")[1];
@@ -35,22 +47,40 @@ const Expenses = () => {
         return decodedPayload;
     }
 
+    // useEffect(() => {
+    //     const decodedToken = decodeToken(token);
+    //     const userId = decodedToken.id;
+    //     axios
+    //         .get(`${URL()}/expenses/${userId}`, tokenConfig(token))
+    //         .then((_res) => {
+    //             setExpensesData(_res.data);
+    //         })
+    //         .catch((err: AxiosError) => {
+    //             console.log(err);
+    //         });
+    // }, [userId, token]);
     useEffect(() => {
+        expenses();
+      },[userId,token]);
+
+    const expenses=()=>{
         const decodedToken = decodeToken(token);
         const userId = decodedToken.id;
+        setLoading(true);
         axios
-            .get(`${URL()}/users/${userId}`, tokenConfig(token))
-            .then((_res) => {
-                setUser(_res.data);
-            })
-            .catch((err: AxiosError) => {
-                console.log(err);
-            });
-    }, [userId, token]);
+        .get(
+            `${URL()}/expenses/${userId}`,
+            tokenConfig(token)
+          )
+          .then((_res) => {
+            setExpensesData(_res.data.expenses);
+          })
+          .catch((err: AxiosError) => console.log(err.response?.data))
+          .finally(() => setLoading(false));
+    }
 
 
     return (
-
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -58,42 +88,32 @@ const Expenses = () => {
             exit={{ opacity: 0 }}
             className="w-full h-full bg-white flex flex-col gap-1 "
         >
-            <div className="relative h-screen w-full bg-primary-color lg:bg-primary-color ">
-                <div className="flex  justify-center h-full w-full p-4 text-center">
-                    <h2 className="w-full font-bold text-week text-white">
-                        <div className="h-full">
-                            <h2 className="w-full font-bold text-week text-white">
-                                {`Welcome ${user?.profile.firstName} ${user?.profile.lastName}`}
-                            </h2>
-                            <hr className="h-[4px] w-full bg-white rounded" />
-                            <h3 className=" font-bold text-title-content text-title-color ">
-                                my personal expenses
-                            </h3>
-                            <div className="flex  justify-center h-[70vh] overflow-auto  text-center bg-white rounded">
-                                <table className=" table-auto w-full text-justify ">
-                                    <thead className="sticky top-0 bg-withe w-1/6 rounded">
-                                        <tr className="rounded-none text-sm md:text-logo text-secondary-color bg-white">
-                                            <th className="p-4">livingPlace</th>
-                                            <th className="p-4">feeding</th>
-                                            <th className="p-4">outfit</th>
-                                            <th className="p-4">health</th>
-                                            <th className="p-4">education</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                            <div className="flex justify-center items-center p-2">
-                                <Button
-                                    text="Añadir"
-                                    type="button"
-                                    iconName="Plus"
-                                    //   onClick={() => dispatch(setShowService(true))}
-                                    className="justify-center font-semibold bg-secondary-color text-white fill-white py-2 px-3"
-                                />
-                            </div>
-                        </div>
-                    </h2>
-                </div>
+            <div>
+                <table className=" table-auto w-full text-justify ">
+                    <thead className="sticky top-0 bg-withe w-1/6 rounded">
+                        <tr className="rounded-none text-sm md:text-logo text-secondary-color bg-white">
+                            <th className="p-4">#</th>
+                            <th className="p-4">Nombre</th>
+                            <th className="p-4 text-center">Precio</th>
+                            <th className="p-4 text-center">Stock</th>
+                            <th className="p-4 text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    {/* <tbody className="bg-menu-color overflow-auto ">
+                        {expenses?.map((expense, index) => (
+                            <tr
+                                className="border-placeholder-color border-y-[0.5px] text-sm md:text-md lg:text-title-content"
+                                key={expense.id}
+                            >
+                                <td className="p-3 ">{index + 1}</td>
+                                <td className="p-3 font-semibold uppercase">
+                                    {`${expense.education}`}
+                                </td>
+                            </tr>
+                        ))}
+
+                    </tbody> */}
+                </table>
             </div>
         </motion.div>
     );

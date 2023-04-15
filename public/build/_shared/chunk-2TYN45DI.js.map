@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../app/components/utils/tokenConfig.ts", "../../../app/hooks/hooks.ts"],
+  "sourcesContent": ["export const tokenConfig = (value: string) => {\n  return {\n    headers: { Authorization: `Bearer ${value}` },\n  };\n};\n\nexport const URL = () => \"http://localhost:8000\";\n\nexport default tokenConfig;\n", "import { useMatches } from \"@remix-run/react\"\r\n\r\nexport const useRouteData = (routeId: string) => {\r\n    const matches = useMatches();\r\n    const data = matches.find((match) => match.id === routeId)?.data;\r\n    return data;\r\n};\r\n"],
+  "mappings": ";;;;;AAAO,IAAM,cAAc,CAAC,UAAkB;AAC5C,SAAO;AAAA,IACL,SAAS,EAAE,eAAe,UAAU,QAAQ;AAAA,EAC9C;AACF;AAEO,IAAM,MAAM,MAAM;AAEzB,IAAO,sBAAQ;;;ACNR,IAAM,eAAe,CAAC,YAAoB;AAFjD;AAGI,QAAM,UAAU,WAAW;AAC3B,QAAM,QAAO,aAAQ,KAAK,CAAC,UAAU,MAAM,OAAO,OAAO,MAA5C,mBAA+C;AAC5D,SAAO;AACX;",
+  "names": []
+}

@@ -1,9 +1,6 @@
 export const validateEmail = (email: String): string | undefined => {
     if (
-        typeof email !== "string"
-        //  ||
-        // email.length !== 8 ||
-        // email.length > 8
+        typeof email !== "string" || !email.includes("@gmail.com")
     ) {
         return "Enter a valid email";
     }

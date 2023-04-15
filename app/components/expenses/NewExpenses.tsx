@@ -10,6 +10,7 @@ import { useRouteData } from "~/hooks/hooks";
 import { setNotifySlice } from "~/store/slice/notify.slice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import SelectOptions from "../Share/inputs/SelectOptions";
 
 interface NewExpensesProps {
     open: boolean,
@@ -26,12 +27,28 @@ type expensesType = {
     outfit: number;
     health: number;
     education: number;
+    month: month;
     total: number;
 }
+enum month {
+    JANUARY = "JANUARY",
+    FEBRUARY = "FEBRUARY",
+    MARCH = "MARCH",
+    APRIL = "APRIL",
+    MAY = "MAY",
+    JUNE = "JUNE",
+    JULY = "JULY",
+    AUGUST = "AUGUST",
+    SEPTEMBER = "SEPTEMBER",
+    OCTOBER = "OCTOBER",
+    NOVEMBER = "NOVEMBER",
+    DECEMBER = "DECEMBER",
+}
+
 
 type ExpensesPick = Pick<
     expensesType,
-    | "education" | "feeding" | "health" | "livingPlace" | "outfit" | "total"
+    | "education" | "feeding" | "health" | "livingPlace" | "outfit" | "month" | "total"
 >
 
 type statusNotify = "available" | "warning" | "error";
@@ -114,7 +131,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="livingPlace"
                             type="number"
                             step="0.00001"
-                            label="livingPlace:"
+                            label="LivingPlace:"
                         />
                         <InputText
                             required
@@ -122,7 +139,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="feeding"
                             type="number"
                             step="0.00001"
-                            label="feeding(s):"
+                            label="Feeding:"
                         />
                         <InputText
                             required
@@ -130,7 +147,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="outfit"
                             type="number"
                             step="0.00001"
-                            label="outfit(s):"
+                            label="Outfit:"
                         />
                         <InputText
                             required
@@ -138,7 +155,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="health"
                             type="number"
                             step="0.00001"
-                            label="health(s):"
+                            label="Health:"
                         />
                         <InputText
                             required
@@ -146,7 +163,15 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="education"
                             type="number"
                             step="0.00001"
-                            label="education:"
+                            label="Education:"
+                        />
+                        <SelectOptions
+                            required
+                            {...register("month")}
+                            name="month"
+                            label="Month:"
+                            defaultValue={"JANUARY"}
+                            options={["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]}
                         />
                         <InputText
                             required
@@ -154,7 +179,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="total"
                             type="number"
                             step="0.00001"
-                            label="total:"
+                            label="Total:"
                         />
                     </div>
                     <div className="flex w-full md:w-1/2 justify-evenly md:pt-5 md:pb-2 ">

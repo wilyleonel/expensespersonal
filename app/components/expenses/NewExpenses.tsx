@@ -179,7 +179,7 @@ const NewExpenses = ({ open, onSave, onClose }: NewExpensesProps) => {
                             name="total"
                             type="number"
                             step="0.00001"
-                            label="Total:"
+                            label="Salary:"
                         />
                     </div>
                     <div className="flex w-full md:w-1/2 justify-evenly md:pt-5 md:pb-2 ">

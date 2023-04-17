@@ -8,6 +8,8 @@ import tokenConfig, { URL } from "~/components/utils/tokenConfig";
 import { useRouteData } from "~/hooks/hooks";
 import Expenses from "./services/expenses";
 import { logout } from "~/components/utils/auth/auth.server";
+import { request } from "http";
+import { Form } from "@remix-run/react";
 
 type UserType = {
   id: number;
@@ -51,7 +53,7 @@ const Home = () => {
       });
   }, [userId, token]);
 
-  
+
 
   return (
 
@@ -66,6 +68,17 @@ const Home = () => {
         <div className="flex  justify-center h-full w-full p-4 text-center">
           <h2 className="w-full font-bold text-week text-white">
             <div className="h-full">
+              <motion.div className="py-1">
+                <Form action="/auth/logout" method="post">
+                  <Button
+                    iconName="Logout"
+                    type="submit"
+                    name="_action"
+                    value="delete"
+                    className=" fill-white font-bold text-white gap-5 border-2 p-2 felx items-center rounded-button float-right "
+                  />
+                </Form>
+              </motion.div>
               <h2 className="w-full font-bold text-week text-white">
                 {`Welcome ${user?.profile.firstName} ${user?.profile.lastName}`}
               </h2>
@@ -84,12 +97,7 @@ const Home = () => {
                   onClick={() => setOpen(true)}
                   className="justify-center font-semibold bg-secondary-color text-white fill-white py-2 px-3"
                 />
-                <Button
-                  text="Logout"
-                  type="button"
-                  onClick={() => logout()}
-                  className="flex items-center font-semibold bg-secondary-color text-white fill-white py-2 px-3"
-                />
+
               </div>
             </div>
           </h2>

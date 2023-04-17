@@ -133,9 +133,12 @@ export async function getUser(request: Request) {
 
 export async function logout(request: Request) {
   const session = await getUserSession(request);
+  console.log(session)
   return redirect("/auth/logout", {
     headers: {
       "Set-Cookie": await storage.destroySession(session),
     },
   });
 }
+
+

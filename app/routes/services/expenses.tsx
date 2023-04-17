@@ -84,8 +84,8 @@ const Expenses = () => {
                             <th className="p-4 text-center">Outfit</th>
                             <th className="p-4 text-center">Healt</th>
                             <th className="p-4 text-center">Education</th>
-                            <th className="p-4 text-center">Month</th>
                             <th className="p-4 text-center">Salary</th>
+                            <th className="p-4 text-center">Month</th>
                             <th className="p-4 text-center">Ending Balance</th>
                         </tr>
                     </thead>

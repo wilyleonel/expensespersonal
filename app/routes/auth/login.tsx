@@ -65,7 +65,7 @@ const Login = () => {
             exit={{ opacity: 0 }}
             className="w-full h-full bg-menu-color flex flex-col gap-2 "
         >
-            <div className="relative h-screen w-full bg-menu-color lg:bg-primary-color">
+            <div className="relative h-screen w-full bg-primary-color lg:bg-primary-color">
                 <div className="flex items-center justify-center h-full w-full">
                     <div
                         className="flex flex-col bg-white drop-shadow-lg h-2/3 md:h-4/5 lg:h-full w-10/12

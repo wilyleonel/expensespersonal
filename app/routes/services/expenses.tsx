@@ -2,8 +2,6 @@ import axios from "axios";
 import type { AxiosError } from "axios";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Button from "~/components/Share/buttons/Button";
-import NewExpenses from "~/components/expenses/NewExpenses";
 import tokenConfig, { URL } from "~/components/utils/tokenConfig";
 import { useRouteData } from "~/hooks/hooks";
 
@@ -19,11 +17,9 @@ type ExpensesType = {
 }
 
 const Expenses = () => {
-    const [loading, setLoading] = useState(false);
     const userId = useRouteData("root");
     const token = useRouteData("root");
     const [expensesData, setExpensesData] = useState<ExpensesType[] | null>(null);
-    console.log(expensesData)
 
     const decodeToken = (token: string) => {
         const payload = token.split(".")[1];
@@ -43,28 +39,6 @@ const Expenses = () => {
                 console.log(err);
             });
     }, [userId, token]);
-
-
-    // useEffect(() => {
-    //     expenses();
-    //   },[userId,token]);
-
-    // const expenses=()=>{
-    //     const decodedToken = decodeToken(token);
-    //     const userId = decodedToken.id;
-    //     setLoading(true);
-    //     axios
-    //     .get(
-    //         `${URL()}/expenses/${userId}`,
-    //         tokenConfig(token)
-    //       )
-    //       .then((_res) => {
-    //         setExpensesData(_res.data.expenses);
-    //       })
-    //       .catch((err: AxiosError) => console.log(err.response?.data))
-    //       .finally(() => setLoading(false));
-    // }
-
 
     return (
         <motion.div

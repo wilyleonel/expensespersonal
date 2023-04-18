@@ -7,8 +7,6 @@ import NewExpenses from "~/components/expenses/NewExpenses";
 import tokenConfig, { URL } from "~/components/utils/tokenConfig";
 import { useRouteData } from "~/hooks/hooks";
 import Expenses from "./services/expenses";
-import { logout } from "~/components/utils/auth/auth.server";
-import { request } from "http";
 import { Form } from "@remix-run/react";
 
 type UserType = {

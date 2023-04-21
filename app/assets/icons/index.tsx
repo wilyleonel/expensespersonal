@@ -3,7 +3,6 @@ import type { SVGAttributes } from "react";
 export interface SVGIconProps
   extends Omit<SVGAttributes<SVGElement>, "xmlns" | "viewBox"> {}
 
-export { default as Alarm } from "./Alarm";
 export { default as CaseMedical } from "./CaseMedical";
 export { default as Clock } from "./Clock";
 export { default as Lock } from "./Lock";
@@ -49,7 +48,6 @@ export { default as Circle } from "./Circle";
 export { default as Print } from "./Print";
 export { default as Menu } from "./Menu";
 export { default as Bussiness } from "./Bussiness";
-export { default as Doctor } from "./Doctor";
 export { default as Microscope } from "./Microscope";
 export { default as HandHeart } from "./HandHeart";
 export { default as SaveDisk } from "./SaveDisk";
